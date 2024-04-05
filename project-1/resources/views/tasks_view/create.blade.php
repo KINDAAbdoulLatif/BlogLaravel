@@ -5,7 +5,7 @@
 @else
     Modification
 @endif  d'une tache</h2>
-<form action="{{ empty($task) ? route('store') : route('update', $task->id) }}" method="POST">
+<form action="{{ empty($task) ? route('tache.store') : route('tache.update', $task->id) }}" method="POST">
     @csrf
     @if (!empty($task))
         @method('put')
@@ -20,7 +20,7 @@
     </div>
     <div class="nb-3">
         <label for="title" class="form-label">Description</label>
-        <textarea class="form-control" name="description" id="description">
+        <textarea class="form-control" name="description" id="description" rows="10">
             @empty($task)
                 {{ old('description', '') }}
             @else
