@@ -31,10 +31,24 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+        if($request->hasFile('image'))
+        {
+            if(file_exists(public_path('back_auth/assets/profile'.$request->user()->image)) AND !empty($request->user()->image))
+            {
+                unlink(public_path('back_auth/assets/profile'.$request->user()->image));
+            }
+        }
+        $ext = $request->file('image')->extension();
+        $file_name = date('YmdHis').''.$ext;
+        $request->file('image')->move(public_path('back_auth/assets/profile'), $file_name);
+
+        $request->user()->image = $file_name;
+        $request->user()->name = $request->name;
+        $request->user()->email = $request->email;
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'profile modifiee');
     }
 
     /**
