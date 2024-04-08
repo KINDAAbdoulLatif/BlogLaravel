@@ -15,8 +15,8 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul class="submenu_class" style="display: none">
-                        <li><a href="all-article.html"> Tous les articles </a></li>
-                        <li><a href="add-article.html"> Ajouter un article </a></li>
+                        <li><a href="{{ route('article.index') }}"> Tous les articles </a></li>
+                        <li><a href="{{ route('article.create') }}"> Ajouter un article </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -40,12 +40,12 @@
                     ><i class="fas fa-user"></i> <span> Auteurs </span>
                         <span class="menu-arrow"></span
                         ></a>
-                    <ul class="submenu_class" style="display: none">
-                        <li><a href="all-author.html">Tous les auteurs </a></li>
+                    {{-- <ul class="submenu_class" style="display: none">
+                        <li><a href="{{ route('author.index') }}">Tous les auteurs </a></li>
                         <li>
-                            <a href="add-author.html"> Ajouter un auteur </a>
+                            <a href="{{ route('author.create') }}"> Ajouter un auteur </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </li>
                 <li>
                     <a href="all-comments.html"

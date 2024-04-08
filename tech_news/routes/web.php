@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
 
 Route::get('/', function () {
@@ -20,4 +21,10 @@ Route::middleware('auth')->group(function () {
 
 //Partie categorie
 Route::resource('/category', CategoryController::class);
+
+//Partie articles
+Route::resource('/article', ArticleController::class);
+
+//Partie author
+// Route::resource('/author', UserController::class);
 require __DIR__.'/auth.php';

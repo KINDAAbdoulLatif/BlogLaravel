@@ -8,6 +8,7 @@ use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest as RequestsStoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest as RequestsUpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('back.category.index');
+        return view('back.category.index', ['categories' => Category::all()]);
 
     }
 
@@ -25,9 +26,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('back.category.index', ['categories' => Category::all()]);
-
+        return view('back.category.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -66,24 +67,30 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category,string $id)
+    public function edit(Category $category)
     {
-        return view('back.category.create', ['category'=>$category]);
+        return view('back.category.create', ['category' => $category]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request->validated($request->all());
+
+        $category->update($request->all());
+
+        return to_route('category.index')->with('success', 'Categorie modifie avec succes');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return back()->with('success', 'Categorie supprime avec succes');
     }
 }
