@@ -25,11 +25,11 @@
                         </p>
                     </div>
                 </article>
-                {{-- <div class="widget">
+                <div class="widget">
                     @foreach($article->tags as $tag)
                         <label class="label label-info btn btn-primary">{{ $tag->name }}</label>
                     @endforeach
-                </div> --}}
+                </div>
                 <div class="widget author-widget clearfix">
                     <h3>A propos de l'auteur</h3>
                     <div class="about-author">

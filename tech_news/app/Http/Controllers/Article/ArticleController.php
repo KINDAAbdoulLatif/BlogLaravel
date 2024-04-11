@@ -17,11 +17,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('back.article.index',
-            [
-                'articles' => Article::all()
-            ]
-        );
+        if(Auth::user()->role == 'admin'){
+                $articles = Article::all();
+         
+        }else{
+            $articles = Article::where('author_id', Auth::user()->id)->get();
+        }
+        return view('back.article.index', compact('articles'));
     }
 
     /**
