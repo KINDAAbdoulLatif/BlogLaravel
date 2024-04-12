@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
@@ -12,12 +14,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('back.dashboard');
-    })
-    ->middleware(['auth', 'verified', ])
-    ->middleware('check:admin,author')
-    ->name('dashboard');
+Route::get('/dashboard', [DashBoardController::class, 'index'])->middleware(['auth', 'verified', 'check:admin,author'])->name('dashboard');
+
+
     // ->middleware(App\Http\Middleware\CheckRole::class, 'admin,author')
 
 Route::middleware('auth')->group(function () {
@@ -33,10 +32,10 @@ Route::resource('/category', CategoryController::class)->middleware(App\Http\Mid
 Route::resource('/article', ArticleController::class);
 
 // Partie author
-Route::resource('/author', UserController::class);
+Route::resource('/author', UserController::class)->middleware(App\Http\Middleware\Admin::class);
 
 //Partie Reseaux Sociaux
-Route::resource('/social', SocialMediaController::class);
+Route::resource('/social', SocialMediaController::class)->middleware(App\Http\Middleware\Admin::class);
 
 //Partie Paramettrage
 Route::get('/paramettre', [SettingsController::class, 'index'])->name('setting.index');

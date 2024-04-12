@@ -21,7 +21,7 @@
                     <div class="dash-widget-header">
                         <div>
                             <h3 class="card_widget_header">
-                                {{-- {{ \Illuminate\Support\Facades\Auth::user()->role == 'author' ? $author_articles : $articles->count() }} --}}
+                                {{ \Illuminate\Support\Facades\Auth::user()->role == 'author' ? $author_articles : $articles->count() }}
                             </h3>
                             <h6 class="text-muted">Total Articles</h6>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="dash-widget-header">
                         <div>
                             <h3 class="card_widget_header">
-                                {{-- {{ $categories }} --}}
+                                {{ $categories }}
                             </h3>
                             <h6 class="text-muted">Total Catégories</h6>
                         </div>
@@ -156,7 +156,7 @@
                     <h4 class="card-title float-left mt-2">Articles recents</h4>
                     <a
                         href="
-                        {{-- {{ route('article.index') }} --}}
+                        {{ route('article.index') }}
                         "
                         type="button"
                         class="btn btn-primary float-right veiwbutton"

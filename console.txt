@@ -3,3 +3,5 @@ php artisan make:migration add_image_to_users --table=users
 php artisan storage:link
 composer require rtConner/laravel-tagging
 php artisan vendor:publish --provider="Conner\Tagging\Providers\TaggingServiceProvider"
+php artisan vendor:publish --tag=laravel-errors
+dans le fichier bootstrap/app on peut definir les alias des middlewares

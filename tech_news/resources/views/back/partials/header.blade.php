@@ -49,10 +49,10 @@
                     </div>
                 </div>
                 <a class="dropdown-item" href="
-                {{-- {{ route('profile.edit') }} --}}
+                {{ route('profile.edit') }}
                 ">Profile</a>
                 <a class="dropdown-item" href="
-                {{-- {{ route('setting.index') }} --}}
+                {{ route('setting.index') }}
                 ">Paramettre</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf

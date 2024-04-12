@@ -35,6 +35,9 @@
                                 name="title"
                                 value="{{ isset($article) ? old('title', $article->title) : old('title') }}"
                             />
+                            @error('name')
+                                <p class="text-reed-500 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -45,6 +48,9 @@
                                     <option @if(isset($article)) @selected($article->category_id == $category->id) @endif value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                            <p class="text-reed-500 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
@@ -72,6 +78,9 @@
                         name="description">
                         {{ isset($article) ? old('description', $article->description) : old('description')}}
                   </textarea>
+                        @error('description')
+                            <p class="text-reed-500 mt-2">{{ $message }}</p>
+                        @enderror
 
                         @if(isset($article))
                             <div class="col-md-12 mt-3">
