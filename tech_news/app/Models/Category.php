@@ -26,4 +26,8 @@ class Category extends Model
     {
         return 'slug';
     }
+    public function articles(){
+        return $this->hasMany(Article::class, 'category_id', 'id')
+            ->where('isActive', 1);
+    }
 }

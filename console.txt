@@ -5,3 +5,5 @@ composer require rtConner/laravel-tagging
 php artisan vendor:publish --provider="Conner\Tagging\Providers\TaggingServiceProvider"
 php artisan vendor:publish --tag=laravel-errors
 dans le fichier bootstrap/app on peut definir les alias des middlewares
+dans appServiceProvider on peut definir des variables globales pour toutes les vues
+on peut modifier les messages d'erreur dans le fichier request

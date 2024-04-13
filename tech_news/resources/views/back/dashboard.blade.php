@@ -176,7 +176,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{-- @foreach($recent_articles as $recent_article)
+                            @foreach($recent_articles as $recent_article)
                                 <tr>
                                     <td class="text-nowrap">
                                         <img src="{{ $recent_article->imageUrl() }}" alt="{{ $recent_article->slug }}" width="100" height="100">
@@ -185,7 +185,7 @@
                                     <td>{{ $recent_article->category->name }}</td>
                                     <td class="text-center">{{ $recent_article->author->name }}</td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
 
                             </tbody>
                         </table>

@@ -17,7 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role == 'admin'){
+        if(Auth::user()->role == 'admin,author'){
                 $articles = Article::all();
          
         }else{
